@@ -1,0 +1,18 @@
+{% extends 'book/index.html'%}
+{% block body %}
+<center><div class="d-flex" style="width: 80%; height: auto; display: flex; justify-content: center; flex-wrap: wrap; background-color: #343a43; border-radius: 10px; padding: 20px; margin-top:80px;">
+    {% if books %}
+    {% for i in books %}
+<div style="with: 200px; background-color: #343a48; height: auto; margin: 10px;" class="shadow p-3 mb-5 bg-grey rounded border-dark border-end border-start">
+                <figure class="figure">
+                <img src="/media/{{ i.cover }}" class="figure-img img-fluid rounded" width="200" alt="dsadsa">
+                </figure>
+                <h5>{{ i.name }}</h5>
+                <a href="/media/{{ i.book_pdf }}" download><button class="btn btn-success">Download</button></a>
+                </div>
+    {%  endfor %}
+    {% else %}
+    <h2>NOT FOUND</h2>
+    {% endif %}
+</div></center>
+{% endblock %}

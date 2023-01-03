@@ -1,0 +1,9 @@
+{% extends 'book/index.html' %}
+{% block body %}
+<form action="" method="post">
+    {% csrf_token %}
+    <input type="text" name="username" class="form-label"><br><br>
+    <input type="password" name="password" class="inputPassword6"><br><br>
+    <button type="submit" class="btn btn-success">Submit</button>
+</form>
+{% endblock %}
