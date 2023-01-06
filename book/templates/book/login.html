@@ -1,9 +1,15 @@
 {% extends 'book/index.html' %}
 {% block body %}
 <form action="{% url 'admin' %}" method="post">
+    <h2 style="font-family: cursive;">ADMIN PANEL</h2>
+    {% if error %}
+    <h3 style="color: red;">{{ error }}</h3>
+    {% endif %}
     {% csrf_token %}
-    <input type="text" name="username" class="form-label"><br><br>
-    <input type="password" name="password" class="inputPassword6"><br><br>
+    <h4>LOGIN</h4>
+    <input type="text" name="username" class="form-label"><br>
+    <h5>PASSWORD</h5>
+    <input type="password" name="password" class="inputPassword"><br><br>
     <button type="submit" class="btn btn-success">Submit</button>
 </form>
 {% endblock %}

@@ -3,8 +3,6 @@ from django.shortcuts import render, redirect, HttpResponse
 from book.forms import CategoryForm, BookForm
 from book.models import Book, Category
 
-authenticated = False
-
 
 def index(request):
     books = Book.objects.all()
@@ -21,8 +19,7 @@ def book_lists(request):
 
 
 def admin(request):
-
-    global authenticated
+    authenticated = False
 
     user = {
         'username': 'admin',
@@ -32,7 +29,9 @@ def admin(request):
     if request.method == "POST":
         if user['username'] == request.POST['username'] and user['password'] == request.POST['password']:
             authenticated = True
-
+        else:
+            warning = "Wrong password"
+            return render(request, 'book/login.html', {'error': warning})
     if authenticated:
         category_form = CategoryForm()
         book_form = BookForm()
